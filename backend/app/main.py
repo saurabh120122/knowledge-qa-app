@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import documents, chat, health
-from app.config import settings
 
 app = FastAPI(
     title="Knowledge Q&A API",
@@ -9,14 +8,15 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS - Allow your frontend URL
+# CORS - Updated for Render + Vercel
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "http://localhost:3000", 
-        "https://*.vercel.app",  # Allow all Vercel domains
-        "*"  # For development - remove in production if you want strict security
+        "http://localhost:3000",
+        "https://*.vercel.app",
+        "https://*.onrender.com",
+        "*"  # Remove this in production if you want strict CORS
     ],
     allow_credentials=True,
     allow_methods=["*"],

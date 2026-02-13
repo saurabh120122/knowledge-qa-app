@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: knowledge-qa-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_EMBEDDING_MODEL
+        value: models/gemini-embedding-001
+      - key: GEMINI_GENERATIVE_MODEL
+        value: gemini-3-flash-preview
+      - key: LLM_PROVIDER
+        value: Google Gemini
+      - key: LLM_MODEL_NAME
+        value: Gemini 3 Flash (Preview)
+      - key: EMBEDDING_MODEL_NAME
+        value: gemini-embedding-001
+      - key: CHROMA_PERSIST_DIR
+        value: /opt/render/project/src/chroma_db
+      - key: UPLOAD_DIR
+        value: /opt/render/project/src/uploads

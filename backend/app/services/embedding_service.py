@@ -10,7 +10,7 @@ def generate_embeddings(texts: List[str]) -> List[List[float]]:
         embeddings = []
         for text in texts:
             result = genai.embed_content(
-                model="models/gemini-embedding-001",  # ← FIXED: Correct model name
+                model="models/gemini-embedding-001", 
                 content=text,
                 task_type="retrieval_document"
             )
@@ -23,7 +23,7 @@ def generate_single_embedding(text: str) -> List[float]:
     """Generate embedding for a single text"""
     try:
         result = genai.embed_content(
-            model="models/gemini-embedding-001",  # ← FIXED: Correct model name
+            model="models/gemini-embedding-001",  
             content=text,
             task_type="retrieval_query"
         )
